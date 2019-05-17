@@ -29,10 +29,10 @@ fi
 if [ $ERROR_FLAG == 1 ]; then
     exit 1
 fi
+mkdir -p ./build
 
 # if recompiling from scratch, clean up everything first
 if [ $MODE == 1 ] || [ $MODE == 99 ] ; then
-    mkdir -p ./build
     rm -rf ./build/*
 fi
 
