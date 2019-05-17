@@ -21,7 +21,7 @@ To add your own executable, you should follow the style of `exampleAnalysis.cxx`
 
 3. Set the installation:
 
-   `install(TARGETS NameOfYourExec DESTINATION ${BIN_DIR}/`
+   `install(TARGETS NameOfYourExec DESTINATION ${BIN_DIR}/)`
 
 We have tried to make the build process easy by providing a shell script. You can just run `bash INSTALL.sh 0`. You can also run the build with `1` or `99` as arguments. If you call the `1`, it will rebuild everything, where the `0` will only rebuild if changes have been made to the source files. `99` will perform a recomile like `1`, but do so more verbosely.
 
