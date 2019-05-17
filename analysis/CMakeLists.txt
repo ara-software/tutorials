@@ -4,6 +4,8 @@ cmake_minimum_required(VERSION 2.6)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/Modules")
 set(FFTW_LIBRARIES "$ENV{PLATFORM_DIR}/lib/libfftw3.so.3.4.4")
 set(FFTW_INCLUDES "$ENV{PLATFORM_DIR}/include")
+set(SRC_DIR ${CMAKE_SOURCE_DIR}/src)
+set(BIN_DIR ${CMAKE_SOURCE_DIR}/bin)
 
 # now, we define our project
 project(MyAnalysis)
@@ -18,5 +20,6 @@ Set(INCLUDE_DIRECTORIES ${ARAEVENT_INCLUDE_DIRS} ${LIBROOTFFTWWRAPPER_INCLUDE_DI
 include_directories( ${INCLUDE_DIRECTORIES} )
 
 # define our executables
-add_executable(exampleAnalysis example_ara_analysis.cxx)
+add_executable(exampleAnalysis ${SRC_DIR}/example_ara_analysis.cxx)
 target_link_libraries( exampleAnalysis ${ARAEVENT_LIBRARIES} ${LIBROOTFFTWWRAPPER_LIBRARIES} ${ROOT_LIBRARIES} ${ZLIB_LIBRARIES})
+install(TARGETS exampleAnalysis DESTINATION ${BIN_DIR})
