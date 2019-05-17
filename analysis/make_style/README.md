@@ -1,1 +1,3 @@
-These are intended to be examples for how to get up and running with ARA data or demonstrate useful things we can do with ARA data.
+#make_style
+
+This is the simple `make` style version of an analysis. To compile this code, type `make exampleAnalysis`. Afterwards, you can execute it like `./exampleAnalysis /path/to/L0/file.root`.
