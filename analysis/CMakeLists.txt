@@ -22,7 +22,7 @@ include_directories( ${INCLUDE_DIRECTORIES} )
 # define our executables
 add_executable(
 	exampleAnalysis
-	${SRC_DIR}/example_ara_analysis.cxx
+	${SRC_DIR}/exampleAnalysis.cxx
 )
 # linking
 target_link_libraries(
