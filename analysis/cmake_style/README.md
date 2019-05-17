@@ -1,6 +1,11 @@
-#cmake_style
+# cmake_style
 
+## Quick Start
 This is the simple CMake style version of an analysis. It is slightly more complicated.
+
+Type `bash INSTALL.sh 0`. Then you can run the executable like`./bin/exampleAnalysis /path/to/L0/file.root`.
+
+## Adding your own code
 
 The executables you would like to compile should be stored in `src`. The compiled executables will be placed in `bin`.
 
