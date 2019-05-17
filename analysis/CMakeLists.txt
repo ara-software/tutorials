@@ -20,6 +20,19 @@ Set(INCLUDE_DIRECTORIES ${ARAEVENT_INCLUDE_DIRS} ${LIBROOTFFTWWRAPPER_INCLUDE_DI
 include_directories( ${INCLUDE_DIRECTORIES} )
 
 # define our executables
-add_executable(exampleAnalysis ${SRC_DIR}/example_ara_analysis.cxx)
-target_link_libraries( exampleAnalysis ${ARAEVENT_LIBRARIES} ${LIBROOTFFTWWRAPPER_LIBRARIES} ${ROOT_LIBRARIES} ${ZLIB_LIBRARIES})
-install(TARGETS exampleAnalysis DESTINATION ${BIN_DIR})
+add_executable(
+	exampleAnalysis
+	${SRC_DIR}/example_ara_analysis.cxx
+)
+# linking
+target_link_libraries(
+	exampleAnalysis 
+	${ARAEVENT_LIBRARIES} 
+	${LIBROOTFFTWWRAPPER_LIBRARIES} 
+	${ROOT_LIBRARIES} ${ZLIB_LIBRARIES}
+)
+# installation
+install(
+	TARGETS exampleAnalysis
+	DESTINATION ${BIN_DIR}/
+)
