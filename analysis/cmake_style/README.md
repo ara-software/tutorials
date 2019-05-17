@@ -1,7 +1,7 @@
 # cmake_style
 
 ## Quick Start
-This is the simple CMake style version of an analysis. It is slightly more complicated.
+This is the simple CMake style version of an analysis. It is slightly more complicated than the pure `make` one.
 
 Type `bash INSTALL.sh 0`. Then you can run the executable like`./bin/exampleAnalysis /path/to/L0/file.root`.
 
