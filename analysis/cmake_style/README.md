@@ -17,7 +17,7 @@ To add your own executable, you should follow the style of `exampleAnalysis.cxx`
 
 2. Set the linking:
 
-   `$target_link_libraries( NameOfYourExec ${ARAEVENT_LIBRARIES} ${LIBROOTFFTWWRAPPER_LIBRARIES} ${ROOT_LIBRARIES} ${ZLIB_LIBRARIES}`
+   `$target_link_libraries( NameOfYourExec ${ARAEVENT_LIBRARIES} ${LIBROOTFFTWWRAPPER_LIBRARIES} ${ROOT_LIBRARIES} ${ZLIB_LIBRARIES} )`
 
 3. Set the installation:
 
