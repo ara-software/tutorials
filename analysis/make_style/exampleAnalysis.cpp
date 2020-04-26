@@ -99,9 +99,32 @@ int main(int argc, char **argv)
 		TGraph *waveform = realAtriEvPtr->getGraphFromRFChan(0);
 		TGraph *interpolated_waveform = FFTtools::getInterpolatedGraph(waveform, 0.5); //get an interpolated waveform with 0.5 ns interpolation
 		TGraph *padded_waveform = FFTtools::padWaveToLength(interpolated_waveform,2048);
-		TGraph *spectrum = FFTtools::makePowerSpectrumMilliVoltsNanoSeconds(padded_waveform); //now make a spectrum
-	
+		TGraph *spectrum = FFTtools::makePowerSpectrumMilliVoltsNanoSecondsdB(padded_waveform); //now make a spectrum
+
+		TCanvas *c = new TCanvas("c","c",2*1000,1000);
+		c->Divide(2,2);
+		c->cd(1);
+			waveform->Draw("ALP");
+			waveform->SetTitle("Ch 0 Raw Waveform; Time (ns); Voltage (mV)");
+			waveform->SetLineColor(kBlack);
+		c->cd(2);
+			interpolated_waveform->Draw("ALP");
+			interpolated_waveform->SetTitle("Ch 0 Interpolated Waveform; Time (ns); Voltage (mV)");
+			interpolated_waveform->SetLineColor(kRed);
+		c->cd(3);
+			padded_waveform->Draw("ALP");
+			padded_waveform->SetTitle("Ch 0 Padded & Interpolated Waveform; Time (ns); Voltage (mV)");
+			padded_waveform->SetLineColor(kBlue);
+		c->cd(4);
+			spectrum->Draw("ALP");
+			spectrum->SetTitle("Ch 0 Spectrum; Frequency (MHz); Power (dB)");
+			spectrum->SetLineColor(kGreen);
+		char title[150];
+		sprintf(title,"run%d_event%d.png",runNum,eventNumber);
+		c->SaveAs(title);
+
 		//now do some cleanup
+		delete c;
 		delete spectrum;
 		delete interpolated_waveform;
 		delete padded_waveform;
