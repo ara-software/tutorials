@@ -6,6 +6,12 @@ from ROOT import TCanvas, TGraph
 from ROOT import gROOT
 import ROOT
 import os
+#################################################################################################################
+#  NOTE THE ORDER IS IMPORTANT HERE
+#  At least in some cases, there is a conflict between the ROOT GUI event loop and
+#  the matplotlib event loop. So if you want to make matplotlib plots, you have to import
+#  matplotlib after ROOT.  You can of course make ROOT plots instead (and in that case, don't import matplotlib)
+#################################################################################################################
 import matplotlib.pyplot as plt
 import numpy as np
 ROOT.gSystem.Load("/users/PAS0654/osu8354/ARA_cvmfs/build/lib/libAraEvent.so")#point this to your AraRoot lib
