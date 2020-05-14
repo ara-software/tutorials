@@ -18,7 +18,7 @@ find_path (ARAEVENT_INCLUDES
 
 AraAntennaInfo.h            AraStationInfo.h            RawIcrrStationEvent.h       araIcrrDefines.h
 AraEventCalibrator.h        AtriEventHkData.h           RawAraGenericHeader.h       RawIcrrStationHeader.h      araIcrrStructures.h
-AtriSensorHkData.h          RawAraStationEvent.h        UsefulAraStationEvent.h     araSoft.h  			AraGeomTool.h
+AtriSensorHkData.h          RawAraStationEvent.h        UsefulAraStationEvent.h     araSoft.h  			        AraGeomTool.h
 FullIcrrHkEvent.h           RawAtriSimpleStationEvent.h UsefulAtriStationEvent.h    AraRawIcrrRFChannel.h       IcrrHkData.h                
 RawAtriStationBlock.h       UsefulIcrrStationEvent.h   	AraRootVersion.h            IcrrTriggerMonitor.h        RawAtriStationEvent.h       
 araAtriStructures.h         AraCalAntennaInfo.h         AraSunPos.h                 AraQualCuts.h               AraEventConditioner.h
