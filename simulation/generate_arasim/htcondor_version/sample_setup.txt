@@ -1,0 +1,62 @@
+// ------------- The Neutrinos --------------//
+
+EXPONENT=18 						//E18
+NNU=10							
+NNU_PASSED=3
+ONLY_PASSED_EVENTS=0				// AraSim throws events until it reaches NNU
+
+// ------------- The Interaction --------------//
+
+INTERACTION_MODE=1					// cylindrical volume mode
+POSNU_RADIUS=6000					// radius of allowed interactions
+
+// ------------- Askaryan and Shower Physics --------------//
+
+SIMULATION_MODE=1 					// more accurate time domain Askaryan simulation
+SHOWER_MODE=2						// both EM and hadronic shower in t-domain signal
+
+// ------------- Geometry and Ice --------------//
+
+number_of_stations=1
+DETECTOR=4 							// import settings from AraRoot
+DETECTOR_STATION=2 					// mimic station 2
+NOFZ=1 								// use a depth dependent index of refraction
+RAYSOL_RANGE=9000					// try to solve the ray if it's closer than 5500 meters
+core_x=10000
+core_y=10000
+
+// ------------- Antennas --------------//
+
+ANTENNA_MODE=1 						//new Thomas models
+ALL_ANT_V_ON=0 						//use Hpol gain for Hpol antennas
+
+// ------------- Electronics --------------//
+
+NFOUR=1024 							// the number of fourier space samples
+TIMESTEP=5.E-10						// value for 2GHz actual station value
+TRIG_WINDOW=1.6E-7					// 160ns which is actual A2 trigger window
+V_SATURATION=1.5					// readout voltage saturation at 1.5V
+
+// ------------- Noise --------------//
+
+NOISE_WAVEFORM_GENERATE_MODE=0 		// generate new noise waveforms for each events
+NOISE_EVENTS=1	 					// number of pure noise waveforms
+TRIG_ANALYSIS_MODE=0 				// 0 = signal + noise, 1 = signal only, 2 = noise only
+NOISE_CHANNEL_MODE=1 				// different noise temp for every channel
+APPLY_NOISE_FIGURE=1  				// apply Thomas calibrated signal chain results
+NOISE=0								// flat thermal noise
+
+// ------------- Triggering --------------//
+
+TRIG_SCAN_MODE=0					// default basic trigger scan mode
+POWERTHRESHOLD=-6.06 				// 100Hz global trig rate for 3 out of 16 ARA stations
+V_MIMIC_MODE=0 						// 0 : global trig is located center of readout windows/ standard time window
+TRIG_MODE=1 						// use vpol, hpol separated trigger mode
+N_TRIG_V=3
+N_TRIG_H=3
+
+// ------------- Output --------------//
+
+DATA_SAVE_MODE=2 					// 2: save no waveform information
+DATA_LIKE_OUTPUT=1 					// 1: triggered events only
+FILL_TREE_MODE=2 					// 2: save triggered only

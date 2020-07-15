@@ -1,0 +1,16 @@
+# user should change the log, output, and error locations
+
+log    = /scratch/brianclark/demo/demo.$(Process).log
+output = /scratch/brianclark/demo/demo.$(Process).out
+error  = /scratch/brianclark/demo/demo.$(Process).err
+
+universe = vanilla
+should_transfer_files = YES
+when_to_transfer_output = ON_EXIT
+getenv = true
+
+executable = job.sh
+arguments = $(Process)
+
+# queue five copies
+queue 5
