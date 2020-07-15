@@ -10,6 +10,8 @@ There are three key components of the scripting architecture:
 - `job.sub`: this is the htcondor submission file (the file with the job parameters)
 - `job.sh`: this is the file that is actually executed and "does the work"
 
+We also provide a sample AraSim output file. There is nothing special about this one (it mimics A2, including data-like output); it's just to make the example here complete.
+
 ## submit.sh
 
 This actually submits the job to htcondor.
