@@ -2,7 +2,7 @@
 
 index=$1
 
-source source /cvmfs/ara.opensciencegrid.org/trunk/centos7/setup.sh
+source /cvmfs/ara.opensciencegrid.org/trunk/centos7/setup.sh
 
 cd /cvmfs/ara.opensciencegrid.org/trunk/centos7/source/AraSim
 

@@ -8,9 +8,11 @@ universe = vanilla
 should_transfer_files = YES
 when_to_transfer_output = ON_EXIT
 getenv = true
+request_memory = 2GB
 
 executable = job.sh
 arguments = $(Process)
 
-# queue five copies
-queue 5
+# queue two copies
+# to queue more copies (e.g. 100) change 2 to 100
+queue 2

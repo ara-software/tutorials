@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # these are environment variables that job.sh will grab
+# the user should change them!
 
 output_dir="/data/user/brianclark/demo"
 export output_dir
