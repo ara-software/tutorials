@@ -13,6 +13,5 @@ request_memory = 2GB
 executable = job.sh
 arguments = $(Process)
 
-# queue two copies
-# to queue more copies (e.g. 100) change 2 to 100
+# queue two copies; to queue more copies (e.g. 100) change 2 to 100
 queue 2

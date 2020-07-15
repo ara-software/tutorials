@@ -9,4 +9,5 @@ export output_dir
 setup_file="/home/brianclark/tutorials/simulation/generate_arasim/htcondor_version/sample_setup.txt"
 export setup_file
 
+# finally condor_submit the job file
 condor_submit job.sub
