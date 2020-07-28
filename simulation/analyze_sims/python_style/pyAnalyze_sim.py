@@ -43,7 +43,7 @@ for i in range(0,1000):#loop over events
 
     if(reportPtr.stations[0].Global_Pass <= 0):#making sure that the event did trigger, otherwise there won't be a waveform (this might not be needed if all waveforms are saved)
         continue
-    gr1 = rawEvent.getGraphFromElecChan(0)#print waveform
+    gr1 = rawEvent.getGraphFromRFChan(0)#print waveform
     isTrue=True
 
 t = []
