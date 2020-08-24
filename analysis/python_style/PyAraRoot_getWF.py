@@ -13,11 +13,13 @@ import os
 #  matplotlib after ROOT.  You can of course make ROOT plots instead (and in that case, you don't need to import matplotlib)
 #################################################################################################################
 import matplotlib.pyplot as plt
+#import matplotlib
+#matplotlib.use( 'tkagg' )
 import numpy as np
-ROOT.gSystem.Load("/users/PAS0654/osu8354/ARA_cvmfs/build/lib/libAraEvent.so")#point this to your AraRoot lib
+ROOT.gSystem.Load("/scratch/brianclark/test_cvmfs/build_cvmfs/ara_build/lib/libAraEvent.so")#point this to your AraRoot lib
 
 # try:
-test = ROOT.TFile.Open("/fs/project/PAS0654/ARA_DATA/A23/100pct/RawData/A2/2013/run2674/event2674.root")#directory where the files are
+test = ROOT.TFile.Open("/data/wipac/ARA/2013/filtered/burnSample1in10/ARA02/root/run1558/event1558.root")#directory where the files are
 # if(test.IsOpen()):
 #     print('made it')
 # else:
@@ -45,7 +47,10 @@ print("ROOT's cannonical drawer:")
 gr1.GetXaxis().SetTitle("Time [ns]")
 gr1.GetYaxis().SetTitle("Voltage [mV]")
 gr1.SetTitle("An example of a waveform with ROOT")
+c = ROOT.TCanvas()
+c.cd()
 gr1.Draw()
+c.Print("root_waveform.png")
 
 print("Or translate to python objects and then plot using matplotlib")
 t = []
@@ -58,4 +63,4 @@ plt.plot(t,v,linewidth=0.5)
 plt.title("An example of a waveform with Python")
 plt.xlabel("Time [ns]")
 plt.ylabel("Voltage [mV]")
-plt.show()
+plt.savefig('python_waveform.png')
