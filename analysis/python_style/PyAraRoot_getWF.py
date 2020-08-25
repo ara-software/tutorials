@@ -1,6 +1,11 @@
 """
+### PyAraRoot_getWF.py ###
 An example of how to retreive ARA's data using pyROOT. Thanks to
 Cosmin and Kaeli for helping me to set this up.
+
+Author: Jorge Torres
+Date: May 28, 2020.
+
 """
 from ROOT import TCanvas, TGraph
 from ROOT import gROOT
@@ -13,17 +18,11 @@ import os
 #  matplotlib after ROOT.  You can of course make ROOT plots instead (and in that case, you don't need to import matplotlib)
 #################################################################################################################
 import matplotlib.pyplot as plt
-#import matplotlib
-#matplotlib.use( 'tkagg' )
 import numpy as np
 ROOT.gSystem.Load("/scratch/brianclark/test_cvmfs/build_cvmfs/ara_build/lib/libAraEvent.so")#point this to your AraRoot lib
 
-# try:
 test = ROOT.TFile.Open("/data/wipac/ARA/2013/filtered/burnSample1in10/ARA02/root/run1558/event1558.root")#directory where the files are
-# if(test.IsOpen()):
-#     print('made it')
-# else:
-#     return -1
+
 calibrator = ROOT.AraEventCalibrator.Instance()
 eventTree = test.Get("eventTree")
 rawEvent = ROOT.RawAtriStationEvent()
