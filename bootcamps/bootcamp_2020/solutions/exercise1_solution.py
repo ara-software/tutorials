@@ -55,7 +55,7 @@ for event in range(100):
 
 	volts = []
 	for sample in range(graph.GetN()):
-		volts.append(graph.GeY()[sample])
+		volts.append(graph.GetY()[sample])
 	volts = np.asarray(volts)
 
 	# now, I can use np to compute the rms and the peak voltage
