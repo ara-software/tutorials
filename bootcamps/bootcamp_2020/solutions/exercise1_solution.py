@@ -12,7 +12,7 @@
 ############################################################################
 
 import ROOT
-import numpy
+import numpy as np
 import matplotlib.pyplot as plot
 import os
 
