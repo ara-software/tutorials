@@ -13,7 +13,7 @@
 
 import ROOT
 import numpy as np
-import matplotlib.pyplot as plot
+import matplotlib.pyplot as plt
 import os
 
 ROOT.gSystem.Load(os.environ.get('ARA_UTIL_INSTALL_DIR')+"/lib/libAraEvent.so")
