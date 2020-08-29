@@ -38,7 +38,7 @@ list_of_snrs = []
 for event in range(100):
 	
 	# get the event
-	eventTree.GetEntry(i)
+	eventTree.GetEntry(event)
 
 	#if not a cal pulser, continue
 	if(rawEvent.isCalpulserEvent()==0): 
