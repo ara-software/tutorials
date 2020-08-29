@@ -30,7 +30,7 @@ eventTree.SetBranchAddress("event",ROOT.AddressOf(rawEvent))
 
 # get the number of entries in this file
 num_events = eventTree.GetEntries()
-print('total events:', totalEvents)
+print('total events:', num_events)
 
 list_of_snrs = []
 
