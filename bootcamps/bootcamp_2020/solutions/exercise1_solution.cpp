@@ -19,6 +19,7 @@
 #include "TGraph.h"
 #include "TCanvas.h"
 #include "TH1D.h"
+#include "TMath.h"
 
 using namespace std;
 
@@ -26,7 +27,7 @@ int main(int argc, char **argv)
 {
 
 	// for output, we will make a histogram
-	TH1D *h = new TH1D("snrs","snrs",20,0,20);
+	TH1D *h = new TH1D("snrs","snrs",20,0,10);
 
 	if(argc<2) {  // Check to make sure there are enough arguments to do something meaningful
 		std::cout << "Usage requires you to provide input parameter of the form " << basename(argv[0]) << " <input data file>" << std::endl;
@@ -80,8 +81,8 @@ int main(int argc, char **argv)
 	}
 
 	TCanvas *c = new TCanvas("c","c", 1100,850);
-	h->Draw("hist")
-	h->SetTitle("Histogram of SNRs; SNR; Number of Events");
-	c->SaveAs("hist_of_snr.png");
+	h->Draw("hist");
+	h->SetTitle("Histogram of Ch 0 SNRs; SNR; Number of Events");
+	c->SaveAs("hist_of_snr_cpp.png");
 
 }//close the main program
