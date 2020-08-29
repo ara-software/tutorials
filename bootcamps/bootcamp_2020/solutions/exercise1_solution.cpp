@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
-////	exercise1_solution.cxx
+////	exercise1_solution.cpp
 ////
 ////	September 2020,  baclark@msu.edu
 ////	Example solution for the first exercise in bootcamp 2020
@@ -53,8 +53,8 @@ int main(int argc, char **argv)
 	} //throw a warning if you can't open it
 	
 	//set the tree address to access our raw data type
-	RawAtriStationEvent *rawAtriEvPtr=0;
-	eventTree->SetBranchAddress("event",&rawAtriEvPtr);
+	RawAtriStationEvent *rawEvent=0;
+	eventTree->SetBranchAddress("event",&rawEvent);
 	
 	double numEntries = eventTree -> GetEntries(); //get the number of entries in this file
 
@@ -62,15 +62,15 @@ int main(int argc, char **argv)
 		
 		eventTree->GetEntry(event); //get the event
 
-		bool isCalpulser = rawAtriEvPtr->isCalpulserEvent();
+		bool isCalpulser = rawEvent->isCalpulserEvent();
 
 		if(!isCalpulser) continue;
 		
 		//make a *useful* event out of the *raw* event, which functionally just calibrates it
-		UsefulAtriStationEvent *realAtriEvPtr = new UsefulAtriStationEvent(rawAtriEvPtr, AraCalType::kLatestCalib);
+		UsefulAtriStationEvent *usefulEvent = new UsefulAtriStationEvent(rawEvent, AraCalType::kLatestCalib);
 	
 		//now, we'll get the waveform from channel 0
-		TGraph *waveform = realAtriEvPtr->getGraphFromRFChan(0);
+		TGraph *waveform = usefulEvent->getGraphFromRFChan(0);
 
 		// because it's a TGraph, we can use some TMath utilities to calculate
 		// the peak and rms, and that allows to calculate the SNR
@@ -85,7 +85,7 @@ int main(int argc, char **argv)
 		h->Fill(peak/rms);
 
 		delete waveform;
-		delete realAtriEvPtr;
+		delete usefulEvent;
 	}
 
 	TCanvas *c = new TCanvas("c","c", 1100,850);
