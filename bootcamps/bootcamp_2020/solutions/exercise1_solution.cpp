@@ -4,6 +4,10 @@
 ////
 ////	September 2020,  baclark@msu.edu
 ////	Example solution for the first exercise in bootcamp 2020
+////
+////	In this example, I will use ROOT to make a histogram
+////	And also rely on class member functions of the TGraph to help
+////	calculate the SNRs
 ////////////////////////////////////////////////////////////////////////////////
 
 // C/C++ Includes
@@ -34,7 +38,8 @@ int main(int argc, char **argv)
 		return -1;
 	}
 	
-	TFile *fpIn = new TFile(argv[1], "OLD"); //we're going to open the data file
+	// open a data file, where the data file was passed as the first argument to the executable
+	TFile *fpIn = new TFile(argv[1], "OLD");
 	if(!fpIn){
 		std::cerr<< "Can not open the old file: " <<argv[1]<<endl;
 		return -1;
