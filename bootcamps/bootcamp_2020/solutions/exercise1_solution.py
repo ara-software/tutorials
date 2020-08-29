@@ -35,7 +35,7 @@ print('total events:', num_events)
 list_of_snrs = []
 
 # loop over the events
-for event in range(100):
+for event in range(num_events):
 	
 	# get the event
 	eventTree.GetEntry(event)
@@ -47,7 +47,7 @@ for event in range(100):
 	# make a useful event
 	usefulEvent = ROOT.UsefulAtriStationEvent(rawEvent,ROOT.AraCalType.kLatestCalib)
 
-	graph = usefulEvent.getGraphFromElecChan(0)
+	graph = usefulEvent.getGraphFromRFChan(0)
 
 	# unpack the voltages into a numpy array to make it easier to do math on
 	# I'm going to do this to model the case where we want to stop using ROOT
@@ -59,9 +59,8 @@ for event in range(100):
 	volts = np.asarray(volts)
 
 	# now, I can use np to compute the rms and the peak voltage
-
 	rms = np.std(volts)
-	peak = np.amax(volts)
+	peak = np.max(np.abs(volts))
 
 	list_of_snrs.append(peak/rms)
 
@@ -70,9 +69,9 @@ for event in range(100):
 list_of_snrs = np.asarray(list_of_snrs)
 
 # now we make a histogram
-fig = plt.figure(figsize=(10,5))
+fig = plt.figure(figsize=(8,5))
 ax = fig.add_subplot(111)
-ax.hist(list_of_snrs, bins=20)
+ax.hist(list_of_snrs, bins=np.arange(0,10,0.5))
 ax.set_ylabel('SNR')
 ax.set_xlabel('Number of Events')
 ax.set_title('Histogram of Ch 0 SNRs')

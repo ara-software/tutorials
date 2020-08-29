@@ -69,15 +69,18 @@ int main(int argc, char **argv)
 		//make a *useful* event out of the *raw* event, which functionally just calibrates it
 		UsefulAtriStationEvent *realAtriEvPtr = new UsefulAtriStationEvent(rawAtriEvPtr, AraCalType::kLatestCalib);
 	
-		//now, we'll get the waveform from channel 2
+		//now, we'll get the waveform from channel 0
 		TGraph *waveform = realAtriEvPtr->getGraphFromRFChan(0);
 
-		// because it's a TGraph, we can use the TGraph class, and some TMath tools
-		// to do basic RMS and peak amplitude detection
-		// and with the peak and the rms, we can calculate the SNR
+		// because it's a TGraph, we can use some TMath utilities to calculate
+		// the peak and rms, and that allows to calculate the SNR
 
-		double rms = waveform->GetRMS(2);
-		double peak = TMath::MaxElement(waveform->GetN(), waveform->GetY());
+		double rms = TMath::RMS(waveform->GetN(), waveform->GetY());
+
+		// now, before computing the peak, ge absolute values 
+		for(int sample=0; sample<waveform->GetN(); sample++) waveform->GetY()[sample] = abs(waveform->GetY()[sample]);
+
+		double peak = TMath::MaxElement(waveform->GetN(), waveform->GetY());	
 
 		h->Fill(peak/rms);
 
