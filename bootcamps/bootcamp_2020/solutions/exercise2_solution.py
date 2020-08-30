@@ -27,7 +27,7 @@ x = []
 y = []
 
 # the x-y coordinates of channels 0-3 are enough for a top down view
-for ant in range(3):
+for ant in range(4):
 	ant_location = geomTool.getStationInfo(2).getAntennaInfo(ant).antLocation
 	x.append(ant_location[0])
 	y.append(ant_location[1])
@@ -35,7 +35,7 @@ for ant in range(3):
 # make a plot
 fig = plt.figure(figsize=(5,5))
 ax = fig.add_subplot(111)
-ax.hist(list_of_snrs, bins=np.arange(0,10,0.5))
+ax.plot(x,y,'ko')
 ax.set_ylabel('X [m]')
 ax.set_xlabel('Y [m]')
 ax.set_title('Borehole locations of A2')
