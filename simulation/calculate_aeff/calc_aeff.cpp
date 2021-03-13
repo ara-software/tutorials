@@ -88,17 +88,24 @@ int main(int argc, char **argv){
 			int globalpass = reportPtr->stations[0].Global_Pass;//If the event triggered the station
 			double sigm = eventPtr->Nu_Interaction[0].sigma;//CC
 			double weight = eventPtr->Nu_Interaction[0].weight;//Weight
-			
-			totweight_thrown+=weight;
-			sigma[inu+2*icurr+4*iflavor] = sigm;
-			typetotweight[inu+2*icurr+4*iflavor]+=weight;
-			totnthrown++;
 
-			if(globalpass>0){//If event passes
-				// totweight+=weight;
-				totweight_trigger+=weight;
-				totweightsq_trigger+=weight*weight;
+			// make sure the weights are sensible before counting the event
+			if(!std::isnan(weight) && (weight <1) && (weight>0)){
+			
+				totweight_thrown+=weight;
+				sigma[inu+2*icurr+4*iflavor] = sigm;
+				typetotweight[inu+2*icurr+4*iflavor]+=weight;
+
+				totnthrown++;
+
+				if(globalpass>0){//If event passes
+					// totweight+=weight;
+					totweight_trigger+=weight;
+					totweightsq_trigger+=weight*weight;
+				}			
 			}
+
+
 		}
 		fpIn->Close();
 		delete fpIn;
