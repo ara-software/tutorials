@@ -30,7 +30,7 @@ using namespace std;
 int main(int argc, char **argv){
 
 	if(argc<3) {  // Check to make sure there are enough arguments to do something meaningful
-		std::cout << "Usage:" << basename(argv[0]) << "<file_1> <file_2> ... <file_n>" << std::endl;
+		std::cout << "Usage:" << basename(argv[0]) << " <string> <file_1> <file_2> ... <file_n>" << std::endl;
 		return -1;
 	}
 	// we need these three pieces of information, but we can make AraSim tell us itself
@@ -51,7 +51,7 @@ int main(int argc, char **argv){
 	}
 	double totweight_thrown = 0;
 
-	for(int file=1; file<argc; file++){
+	for(int file=2; file<argc; file++){
 		cout<<"On file "<<argv[file]<<endl;
 		TFile *fpIn = new TFile(argv[file], "OLD"); //we're going to open the data file
 		if(!fpIn){ std::cerr<< "Cannot open the old file: " <<argv[file]<<endl; return -1;}
@@ -132,7 +132,7 @@ int main(int argc, char **argv){
 
 
 	char buf[100];
-	sprintf(buf, "./aeff_vs_energy.csv");//Name of the file to be produced with results
+	sprintf(buf, "./aeff_vs_energy_%s.csv",argv[1]);//Name of the file to be produced with results
 	FILE *fout = fopen(buf, "a+");
 	fprintf(fout, "%.1f, %.5f, %.5f \n", energy, aeff_sr, aeff_sr_err);//convert to cm^2 and save out to file
 	fclose(fout);
